@@ -49,11 +49,10 @@ namespace social_navigation_layers
             *min_x = std::min(*min_x, person.position.x - point);
             *min_y = std::min(*min_y, person.position.y - point);
             *max_x = std::max(*max_x, person.position.x + point);
-            *max_y = std::max(*max_y, person.position.y + point);
-              
+            *max_y = std::max(*max_y, person.position.y + point);  
         }
     }
-    
+
     void ProxemicLayer::updateCosts(costmap_2d::Costmap2D& master_grid, int min_i, int min_j, int max_i, int max_j){
         boost::recursive_mutex::scoped_lock lock(lock_);
         if(!enabled_) return;

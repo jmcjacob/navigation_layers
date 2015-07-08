@@ -52,14 +52,14 @@ namespace social_navigation_layers
               *min_y = std::min(*min_y, tpt.position.y - point);
               *max_x = std::max(*max_x, tpt.position.x + point);
               *max_y = std::max(*max_y, tpt.position.y + point);
-              
             }
             catch(tf::LookupException& ex) {
               ROS_ERROR("No Transform available Error: %s\n", ex.what());
               continue;
             }
             catch(tf::ConnectivityException& ex) {
-              ROS_ERROR("Connectivity Error: %s\n", ex.what());
+              ROS_ERROR("Connectivity Error passing: %s\n" ,ex.what());
+              ROS_INFO("%s\n", global_frame.c_str());
               continue;
             }
             catch(tf::ExtrapolationException& ex) {

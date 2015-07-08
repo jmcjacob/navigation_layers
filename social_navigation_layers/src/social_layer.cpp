@@ -61,7 +61,7 @@ namespace social_navigation_layers
               continue;
             }
             catch(tf::ConnectivityException& ex) {
-              ROS_ERROR("Connectivity Error: %s\n", ex.what());
+              ROS_ERROR("Connectivity Error social: %s\n", ex.what());
               continue;
             }
             catch(tf::ExtrapolationException& ex) {
