@@ -68,7 +68,7 @@ namespace social_navigation_layers
         
         for(p_it = transformed_people_.begin(); p_it != transformed_people_.end(); ++p_it){
             people_msgs::Person person = *p_it;
-            double angle = atan2(person.velocity.y, person.velocity.x);
+            double angle = atan2(-person.velocity.y, -person.velocity.x);
             double mag = sqrt(pow(person.velocity.x,2) + pow(person.velocity.y, 2));
             double factor = 1.0 + mag * factor_;
             double base = get_radius(cutoff_, amplitude_, covar_);
