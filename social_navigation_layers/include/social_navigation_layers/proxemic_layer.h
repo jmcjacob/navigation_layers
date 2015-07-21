@@ -22,6 +22,7 @@ namespace social_navigation_layers
     protected:
       void configure(ProxemicLayerConfig &config, uint32_t level);
       double cutoff_, amplitude_, covar_, factor_;
+      bool left_;
       dynamic_reconfigure::Server<ProxemicLayerConfig>* server_;
       dynamic_reconfigure::Server<ProxemicLayerConfig>::CallbackType f_;
   };

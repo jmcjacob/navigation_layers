@@ -59,7 +59,6 @@ namespace social_navigation_layers
             }
             catch(tf::ConnectivityException& ex) {
               ROS_ERROR("Connectivity Error passing: %s\n" ,ex.what());
-              ROS_INFO("%s\n", global_frame.c_str());
               continue;
             }
             catch(tf::ExtrapolationException& ex) {
@@ -144,7 +143,10 @@ namespace social_navigation_layers
                   double diff = angles::shortest_angular_distance(angle, ma);
                   double a;
                   if(fabs(diff)<M_PI/2)
+                    if (left_)
                       a = gaussian(x,y,cx,cy,amplitude_,covar_*factor,covar_,angle);
+                    else
+                      a = gaussian(x,y,cx,cy,amplitude_,covar_*factor,covar_,-angle);
                   else
                     continue;
                   
@@ -152,7 +154,7 @@ namespace social_navigation_layers
                   if(a < cutoff_)
                     continue;
                   unsigned char cvalue = (unsigned char) a;
-                  costmap->setCost(i+dx, j+dy, std::max(cvalue, old_cost));
+                    costmap->setCost(i+dx, j+dy, std::max(cvalue, old_cost));
 
               }
             } 
@@ -160,8 +162,6 @@ namespace social_navigation_layers
             
         }
     }
-
-
 
   };
 };

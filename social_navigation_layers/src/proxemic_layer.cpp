@@ -151,6 +151,7 @@ namespace social_navigation_layers
         factor_ = config.factor;
         people_keep_time_ = ros::Duration(config.keep_time);
         enabled_ = config.enabled;
+        left_ = config.left;
     }
 
 
